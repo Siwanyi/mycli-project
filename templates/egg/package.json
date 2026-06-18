@@ -1,0 +1,16 @@
+{
+  "name": "{{projectName}}",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "egg-bin dev",
+    "start": "egg-scripts start --daemon --title=egg-server-{{projectName}}",
+    "stop": "egg-scripts stop --title=egg-server-{{projectName}}"
+  },
+  "dependencies": {
+    "egg": "^3.0.0",
+    "egg-scripts": "^2.17.0"
+  },
+  "devDependencies": {
+    "egg-bin": "^6.0.0"
+  }
+}

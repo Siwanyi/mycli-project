@@ -1,0 +1,25 @@
+{
+  "name": "mycli",
+  "version": "1.0.0",
+  "description": "A simple Node.js backend scaffold CLI",
+  "main": "bin/cli.js",
+  "bin": {
+    "mycli": "bin/cli.js"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node bin/cli.js",
+    "help": "node bin/cli.js --help",
+    "init:demo": "node bin/cli.js init demo-service --template express --force"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "wangzhe",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^14.0.3",
+    "inquirer": "^9.2.15",
+    "ora": "^7.0.1"
+  }
+}
