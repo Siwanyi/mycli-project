@@ -311,20 +311,31 @@ templates/express
     |   |-- errorHandler.js            # 统一错误处理
     |   |-- notFoundHandler.js         # 404 兜底处理
     |   `-- requestLogger.js           # 请求日志中间件
+    |-- model
+    |   `-- userModel.js               # 数据模型定义示例
+    |-- repository
+    |   `-- userRepository.js          # 数据访问层示例
     |-- router
     |   `-- index.js                   # 路由注册
     |-- service
     |   `-- healthService.js           # 业务逻辑层
-    `-- utils
-        `-- response.js                # 统一响应工具
+    |-- utils
+    |   `-- response.js                # 统一响应工具
+    `-- validator
+        |-- index.js                   # 参数校验中间件工厂
+        `-- schema
+            `-- healthSchema.js        # 健康检查接口参数规则示例
 ```
 
 特点：
 
 - `app.js` 和 `server.js` 分离，便于后续测试和复用应用实例。
+- 开发脚本使用 `nodemon`，保存代码后会自动重启服务。
 - 使用 `express.json()` 和 `express.urlencoded()` 解析常见请求体。
 - 使用 `Router()` 集中维护接口路由。
 - controller 层只处理 HTTP 语义，service 层承载业务逻辑。
+- model 层描述数据结构，repository 层隔离数据访问，便于后续接入数据库。
+- validator/schema 层集中维护参数校验规则，便于后续接入 Joi、Zod 等校验库。
 - middleware 层提供请求日志、404 兜底和统一错误处理。
 - utils 层提供统一响应结构，降低前后端联调成本。
 - 健康检查接口为 `GET /api/health`。
