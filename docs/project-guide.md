@@ -299,17 +299,34 @@ spinner.succeed(...)
 templates/express
 |-- package.json
 `-- src
-    |-- app.js
+    |-- app.js                         # 组装 Express 应用和中间件
+    |-- server.js                      # 服务启动入口，负责监听端口
+    |-- config
+    |   `-- index.js                   # 集中管理运行时配置
+    |-- constant
+    |   `-- httpStatus.js              # 常用 HTTP 状态码常量
     |-- controller
-    |   `-- healthController.js
-    `-- router
-        `-- index.js
+    |   `-- healthController.js        # HTTP 入参和响应处理
+    |-- middleware
+    |   |-- errorHandler.js            # 统一错误处理
+    |   |-- notFoundHandler.js         # 404 兜底处理
+    |   `-- requestLogger.js           # 请求日志中间件
+    |-- router
+    |   `-- index.js                   # 路由注册
+    |-- service
+    |   `-- healthService.js           # 业务逻辑层
+    `-- utils
+        `-- response.js                # 统一响应工具
 ```
 
 特点：
 
-- 使用 `express.json()` 解析 JSON 请求体。
-- 使用 `Router()` 维护路由。
+- `app.js` 和 `server.js` 分离，便于后续测试和复用应用实例。
+- 使用 `express.json()` 和 `express.urlencoded()` 解析常见请求体。
+- 使用 `Router()` 集中维护接口路由。
+- controller 层只处理 HTTP 语义，service 层承载业务逻辑。
+- middleware 层提供请求日志、404 兜底和统一错误处理。
+- utils 层提供统一响应结构，降低前后端联调成本。
 - 健康检查接口为 `GET /api/health`。
 
 ### Koa 模板

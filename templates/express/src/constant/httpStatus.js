@@ -1,0 +1,9 @@
+// 常用 HTTP 状态码常量，避免在业务代码中直接散落魔法数字。
+export const HTTP_STATUS = {
+  OK: 200,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500
+}
